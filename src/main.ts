@@ -6,23 +6,14 @@ interface IString {
     data: string;
 }
 
-/**
- * @intersection & AND
- * @union | OR
- */
-function printSome(param: INumber | IString){
-    if("value" in param) console.log(param.value);
-    if("data" in param) console.log(param.data);
+interface IBoolean {
+    data: boolean;
 }
-printSome({value: 2024});
-printSome({data: "hello"});
 
-function printAnother (param: INumber & IString){
-    console.log(param);
+function example(param: any){
+    console.log(typeof param);
 }
-printAnother({
-    value: 2024,
-    data: "hello"
-});
-
-
+example("hello");
+example(2024);
+example(true);
+example(undefined);
