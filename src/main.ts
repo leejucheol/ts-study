@@ -1,19 +1,48 @@
-interface INumber {
-    value: number;
+class Book{
+/**
+ * 접근 제한자
+ * @public - 누구나
+ * @protected - 자식 + 본인인
+ * @private - 자기 자신만
+ */
+
+    protected title: string;
+
+    printTitle(){
+        console.log(this.title);
+    }
+
+    constructor(title: string){
+        this.title = title;
+    }
+
+    somethingImpact(){
+        this.title = "new book!";
+    }
 }
 
-interface IString {
-    data: string;
+class Test extends Book{
+    constructor(title: string){
+        super(title);
+    }
+
+    printTitleFromChild(): void {
+        console.log(this.title);
+    }
 }
 
-interface IBoolean {
-    data: boolean;
-}
+// private readonly 예시
+// class Book{
+//     constructor (
+//         private readonly title: string,
+//         private readonly a: any,
+//         private readonly b: any
+//     ) {}
+// }
+// const b: Book = new Book("inflearn", "hello", "world");
+// //b.title = "hello";
+// console.log(b);
 
-function example(param: any){
-    console.log(typeof param);
-}
-example("hello");
-example(2024);
-example(true);
-example(undefined);
+const b: Book = new Book("inflearn");
+//b.title = "hello";
+console.log(b.printTitle());
